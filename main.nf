@@ -51,7 +51,7 @@ process trimmomatic {
     ILLUMINACLIP:${adapters_file}:2:30:10
     """
 }
-
+#Added second argument for trimmomatic
 // Run the workflow
 workflow {
     read_pairs_ch.view()
