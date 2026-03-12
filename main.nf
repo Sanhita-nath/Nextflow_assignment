@@ -49,8 +49,8 @@ process trimmomatic {
     path adapters_file
 
     output:
-    tuple val("${sample}"), path("${sample}*.trimmed.fq.gz")
-    tuple val("${sample}"), path("${sample}*.discarded.fq.gz")
+    tuple val("${sample}"), path("${sample}*.trimmed.fq.gz"), emit: trimmed_fq
+    tuple val("${sample}"), path("${sample}*.discarded.fq.gz"), emit: discarded_fq
 
     script:
     """
