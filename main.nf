@@ -68,6 +68,12 @@ process bwa-mem2 {
     path reference
 
     output:
+    tuple val(sample), path("${sample}.sam")
+    
+    script:
+    """
+    bwa-mem2 mem -t ${task.cpus} ${reference} ${reads[0]} ${reads[1]} > ${sample}.sam
+    """
 }
     
 //Added second argument for trimmomatic
