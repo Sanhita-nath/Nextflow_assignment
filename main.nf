@@ -65,14 +65,14 @@ process bwa_mem2 {
 
     input:
     tuple val(sample), path(reads)
-    path reference
+    path reference_files
 
     output:
     tuple val(sample), path("${sample}.sam")
     
     script:
     """
-    bwa-mem2 mem -t ${task.cpus} ${reference} ${reads[0]} ${reads[1]} > ${sample}.sam
+    bwa-mem2 mem -t ${task.cpus} LG12.fasta ${reads[0]} ${reads[1]} > ${sample}.sam
     """
 }
     
