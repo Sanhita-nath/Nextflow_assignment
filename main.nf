@@ -18,7 +18,7 @@ Adapters         : ${params.adapters}
 // Create read channel
 read_pairs_ch = Channel.fromFilePairs(params.reads, checkIfExists: true).map { sample, reads -> tuple(sample, reads.collect { it.toAbsolutePath() }) }
 adapter_ch = Channel.fromPath(params.adapters)
-reference_ch = Channel.fromPath(params.reference, checkIfExists: true)
+reference_ch = Channel.fromPath(params.reference, checkIfExists: true).collect()
 
 
 // Define fastqc process
