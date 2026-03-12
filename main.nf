@@ -57,6 +57,19 @@ process trimmomatic {
     trimmomatic PE -phred33 ${reads[0]} ${reads[1]} ${sample}_1.trimmed.fq.gz ${sample}_1.discarded.fq.gz ${sample}_2.trimmed.fq.gz ${sample}_2.discarded.fq.gz ILLUMINACLIP:${adapters_file}:2:30:10
     """
 }
+
+// define alignment_process
+process bwa-mem2 {
+    label "bwa-mem2"
+    publishDir "$ {params.outdir}/aligned-reads-${sample}/", mode: 'copy'
+
+    input:
+    tuple val(sample), path(reads)
+    path reference
+
+    output:
+}
+    
 //Added second argument for trimmomatic
 // Run the workflow
 workflow {
