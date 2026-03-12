@@ -61,7 +61,7 @@ process trimmomatic {
 // define alignment_process
 process bwa-mem2 {
     label "bwa-mem2"
-    publishDir "$ {params.outdir}/aligned-reads-${sample}/", mode: 'copy'
+    publishDir "${params.outdir}/aligned-reads-${sample}/", mode: 'copy'
 
     input:
     tuple val(sample), path(reads)
