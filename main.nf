@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 params.reads = 'data/*_{1,2}.fq.gz'
 params.outdir = 'outputs/Sanhita/'
 params.adapters = 'adapters.fa'
-params.reference = 'LG12.fasta'
+params.reference = 'LG12.fasta*'
 
 log.info """
       LIST OF PARAMETERS
