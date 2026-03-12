@@ -82,7 +82,7 @@ workflow {
     read_pairs_ch.view()
     fastqc(read_pairs_ch)
     trim_out = trimmomatic(read_pairs_ch, adapter_ch)
-    bwa_mem2_align(trim_out.trimmed_fq, reference_ch)
+    bwa_mem2(trim_out.trimmed_fq, reference_ch)
 }
 
 
