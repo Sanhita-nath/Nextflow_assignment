@@ -5,6 +5,8 @@ nextflow.enable.dsl=2
 params.reads = 'data/*_{1,2}.fq.gz'
 params.outdir = 'outputs/Sanhita/'
 params.adapters = 'adapters.fa'
+params.reference = 'LG12.fasta'
+
 log.info """
       LIST OF PARAMETERS
 ================================
@@ -16,6 +18,8 @@ Adapters         : ${params.adapters}
 // Create read channel
 read_pairs_ch = Channel.fromFilePairs(params.reads, checkIfExists: true).map { sample, reads -> tuple(sample, reads.collect { it.toAbsolutePath() }) }
 adapter_ch = Channel.fromPath(params.adapters)
+reference_ch = Channel.fromPath(params.reference, checkIfExists: true)
+
 
 // Define fastqc process
 process fastqc {
